@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Procured | Test_screen</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="css/test.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var appmod = angular.module("mainApp", []);
+        appmod.controller('appController', ['$scope', function($scope) {
+            $scope.json = [{
+                "category": "Apptitude",
+                "question": "5"
+            }, {
+                "category": "Technical",
+                "question": "7"
+            }, {
+                "category": "Reasoning",
+                "question": "7"
+            }];
+
+            $scope.quesarr = function(v) {
+                arr = []
+                for(i=1; i<=v; i++) arr.push(i)
+                return arr
+            };
+
+            $scope.getQuestion = function(cat, ques) {
+                console.log(cat, ques);
+            };
+        }]);
+    </script>
+    <style>
+        body
+        {
+            overflow:hidden;
+        }
+        #accordion
+        {
+            overflow-y: scroll !important;
+            height: 600px;
+        }
+        .logo
+        {
+            height:58px;
+            width:180px;
+        }
+        .btn_complete
+        {
+            margin-top:12%;
+            padding:4%;
+            border-radius:4px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"> </span></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav navbar-right">
+                <a href="cmplt_src.html"><span><button class="btn_complete">Complete test</button></span></a>
+            </div></div>
+    </div>
+</nav>
+<div class="row row_Slide" ng-app="mainApp" ng-controller="appController">
+    <div class="col-md-2 list" >
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default" ng-repeat="c in json">
+                <div class="panel-heading" >
+                    <h4 class="panel-title" >
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{c.category}}</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body" >
+                        <ul class="dropdown-toggle">
+                            <p>Questions</p>
+                            <li ng-repeat="q in quesarr(c.question) track by $index" id="{{c.category}}_q_{{q}}"><a href="javascript:void(0)" ng-click="getQuestion(c.category, q)">Q.{{q}}</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 question-panel">
+        <div class="col-md-2">
+            <button class="prev_btn"><img src="images/prev.png" height="10%"></button></div>
+        <div class="col-md-8 que">
+            <h5 class="h5_que">Q.1. What is Computer jdhdhvhjd hdbjdhdhfu hjuhdfhdhnfjkdn dhfydhfdhnfjrdh dhfyhfduhf dhfuhfhf hhfyhufh hfuehfen?</h5>
+            <input type="radio" value="machine1" name="mac">&nbsp;Machine 1<br>
+            <input type="radio" value="machin2" name="mac">&nbsp;Machine 2<br>
+            <input type="radio" value="machine3" name="mac">&nbsp;Machine 3<br>
+            <input type="radio" value="machine4" name="mac">&nbsp;Machine 4<br><br>
+            <input type="button" value="Clear" class="btn">&nbsp;
+            <input type="button" value="Submit" class="btn">
+        </div>
+        <div class="col-md-2">
+            <button class="prev_btn"><img src="images/next.png" height="10%"></button></div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
