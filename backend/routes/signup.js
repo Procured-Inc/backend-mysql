@@ -3,6 +3,15 @@
  */
 var express = require('express');
 var app = express();
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'info.procured@gmail.com', // Your email id
+        pass: 'procured@123' // Your password
+    }
+});
+
 var signup=app.post('/', function (req, res) {
     connection.query('SELECT * from student_info where email_id=?', req.body.email, function (err, rows, fields) {
         if (rows.length != 0){
