@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var Registration = require('./routes/Registration');
-var login = require('./routes/login');
+var login = require('./routes/login_user');
 var rules = require('./routes/rules');
 var test = require('./routes/test');
 var studentdata =require('./routes/studentdata');
@@ -125,14 +125,6 @@ app.get('/data',function (err,res) {
 
 
 //transporter for mail
-var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'info.procured@gmail.com', // Your email id
-        pass: 'procured@123' // Your password
-    }
-});
 
 
 // catch 404 and forward to error handler
