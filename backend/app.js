@@ -12,13 +12,17 @@ var Registration = require('./routes/Registration');
 var login = require('./routes/login');
 var rules = require('./routes/rules');
 var test = require('./routes/test');
+var studentdata =require('./routes/studentdata');
+var marks = require('./routes/marks');
+
+
 var bcrypt = require('bcrypt-nodejs');
-var studentdata=require('./routes/studentdata');
+
 var app = express();
 // mysql connection
 /*var session = require('express-session')
  var MongoStore = require('connect-mongo')(session);*/
-var connection=require('./routes/mysql');
+var connection=require('./connection/mysql');
 
 
 
@@ -63,6 +67,7 @@ app.use('/rules', rules);
 app.use('/login', login);
 app.use('/test', test);
 app.use('/studentdata',studentdata);
+app.use('/marks', marks);
 
 // khatm my sql connection
 
@@ -73,14 +78,14 @@ app.use('/studentdata',studentdata);
 app.post('/login_auth', function (reqs, response) {
 
     var post = reqs.body;
-    console.log('sks', post.username)
+    console.log('sks', post.username);
     connection.query('SELECT pass_word from authentication where user_name=?', post.username, function (err, rows) {
         if (rows.length === 0)
             console.log('username invalid');
 
 
         else {
-            console.log(rows)
+            console.log(rows);
             bcrypt.compare(post.password, rows[0].pass_word, function (err, res) {
                 // res == true
                 if (res) {
