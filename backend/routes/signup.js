@@ -3,6 +3,8 @@
  */
 var express = require('express');
 var app = express();
+var connection=require('../connection/mysql');
+var bcrypt = require('bcrypt-nodejs');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -16,13 +18,13 @@ var signup=app.post('/', function (req, res) {
     connection.query('SELECT * from student_info where email_id=?', req.body.email, function (err, rows, fields) {
         if (rows.length != 0){
             console.log('email is already registered');
+            res.send('email is already registered');
         }
 
         else {
 
             bcrypt.hash(req.body.contact_no, null, null, callback)
             function callback(error, hash) {
-                console.log('inside', hash)
                 // Store hash in your password DB.
                 var post1 = {
                     user_name: req.body.email,
@@ -33,15 +35,30 @@ var signup=app.post('/', function (req, res) {
                     if (err)
                         console.log(error);
                     else {
-                        console.log(post1);
+                        console.log('query1 done');
                     }
                 });
+
+            var post2 = {
+                email_id: req.body.email,
+                contact_no:req.body.contact_no
+
             }
-
+            console.log('connection', hash);
+            var query2 = connection.query('INSERT INTO student_info SET ?', post2, function (err, result) {
+                if (err)
+                    console.log(error);
+                else {
+                    console.log('query2 done');
+                }
+            });
+        }
             // sending mail
-
+            var link="http://localhost:5000/login_user"
             var text = 'Hello your username is:  ' + req.body.email
-                + '\n Your password is: ' + req.body.contact_no;
+                + '\n Your password is: ' + req.body.contact_no +
+                "Please complete ur profile before test by clicking on following link \n "+link;
+
 
             var mailOptions = {
                 from: 'shubham.apatidar111@gmail.com', // sender address
@@ -55,7 +72,8 @@ var signup=app.post('/', function (req, res) {
                     console.log(error);
 
                 } else {
-                    res.sendFile(path.join(__dirname+'/public/images/thankyou.jpg'));
+
+                    res.send('{ "message" : "Signup done!" }');
                 }
 
             });

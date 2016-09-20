@@ -17,7 +17,7 @@ var bcrypt = require('bcrypt-nodejs');
 var studentdata=require('./routes/studentdata');
 var signup = require('./routes/signup');
 var login_auth=require('./routes/login_auth');
-var connection=require('./routes/mysql');
+var connection=require('./connection/mysql');
 var app = express();
 // mysql connection
 /*var session = require('express-session')
