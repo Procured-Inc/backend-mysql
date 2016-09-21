@@ -5,11 +5,13 @@ var express = require('express');
 var app = express();
 var bcrypt = require('bcrypt-nodejs');
 var connection=require('../connection/mysql');
-var login_auth= app.get('/', function (reqs, response) {
+var studentdata=require('../routes/studentdata');
+
+var login_auth= app.post('/', function (reqs, response) {
 
     var post = reqs.body;
-    console.log('sks', post.username)
-    connection.query('SELECT pass_word from authentication where user_name=?', post.username, function (err, rows) {
+    console.log(post.user_name)
+    connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
         if (rows.length === 0)
             console.log('username invalid');
 
@@ -20,6 +22,7 @@ var login_auth= app.get('/', function (reqs, response) {
                 // res == true
                 if (res) {
                     response.send('test start');
+                    app.use('/studentdata',studentdata);
                     console.log('inside')
                     setTimeout(function() {
                         console.log('over')

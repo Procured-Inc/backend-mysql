@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Procured | Details</title>
@@ -25,7 +24,7 @@
     <style>
         body
         {
-            background-image:url(images/images3.jpg);
+            background-image:url(images/stack-of-books-vintage-books-book-books-medium.jpg);
         }
 
         .logo
@@ -50,12 +49,11 @@
             padding:10px;
             background-color:white;
             font-weight:bold;
-            opacity:.8;
+
         }
         .lab
         {
-            text-align:right;
-            display:inline-block;
+            text-align:right !important;
         }
         #btn2:hover
         {
@@ -65,7 +63,7 @@
         {
             border-radius:4px;
             margin-bottom:1%;
-            padding-left:5px;
+            padding:5px;
             margin-left:5px;
         }
         .hr1
@@ -76,6 +74,12 @@
         {
             font-weight:bolder;
             color:#009999;
+        }
+        .select
+        {
+            margin-left:3px;
+            padding:5px;
+            border-radius:3px;
         }
     </style>
 </head>
@@ -102,44 +106,78 @@
         </div>
     </div>
 </nav>
-<div class="container image1" >
+<div class="container image1">
     <div class="row">
         <div class="col-md-12">
-    <form action='/student_data'  method="post" role="form" >
+            <form action='/studentdata'method="PUT">
                 <div class="form-group first">
-                <h3 class="h33">Personal Details</h3>
-                <hr class="hr1">
-                <label class="lab">Name :</label><input type="text" name="first_name" id="first_name"  placeholder="First Name" tabindex="1" required>
-                <input type="text" name="last_name" id="last_name"  placeholder="Last Name" tabindex="1"><br>
-                <label class="lab">D.O.B :</label><input type="date" name="dob" id="date"><br>
-                <label class="lab">Gender :&nbsp;</label><input type="radio" name="gender" value="male" checked> Male
-                <input type="radio" name="gender" value="female"> Female
-                <input type="radio" name="gender" value="other"> Other<br><br>
-                <label class="tab">Student ID:</label><input type="text" name="id" id="ID" placeholder="Student Id" tabindex="1"><br>
-                <label class="lab">Email Id:&nbsp;&nbsp;</label><input type="email" name="ema_il" id="student_Id" placeholder="Email Id" tabindex="1"><br>
-                <label class="lab">Contact No.:</label><input type="text" name="contact_no" id="contact_no" placeholder="Enter only 10 digits" tabindex="1">
+                    <h3 class="h33">Personal Details</h3>
+                    <hr class="hr1">
+                    <label class="lab">Name :</label>
+                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" id="last_name"   class="form-control" placeholder="Last Name" ><br>
+                    <label class="lab">D.O.B :</label>
+                    <input type="date" name="b_day" class="form-control" id="date"><br>
+                    <label class="lab">Gender :</label>
+                    <select class="select form-control">
+                        <option value="Gender">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option></select><br><br>
+                    <label class="lab">Student ID:</label>
+                    <input type="text" name="id" id="ID" placeholder="Student Id" class="form-control" ><br>
+                    <label class="lab">Email Id:</label>
+                    <input type="email" name="email_id" id="student_Id" placeholder="Email Id" class="form-control"><br>
+                    <label class="lab">Contact No.:</label>
+                    <input type="text" name="contact_no" id="contact_no" placeholder="Enter only 10 digits" class="form-control">
                 </div>
                 <div class="form-group first">
-                <h3  class="h33">Educational Details</h3>
-                <hr class="hr1">
-                    <label class="lab">10th %age:</label><input type="text" name="board_10" id="board-10"  placeholder="Board" tabindex="1">&nbsp;
-                <input type="text" name="yop_10" id="yop-10"  placeholder="Year of passing" tabindex="1">&nbsp;
-                <input type="text" name="score_10" id="marks_10"  placeholder="Percentage" tabindex="1"><br><br>
-                <label class="lab">12th %age:</label><input type="text" name="board_12" id="board-12"  placeholder="Board" tabindex="1">&nbsp;
-                <input type="text" name="yop_12" id="yop_12"  placeholder="Year of passing" tabindex="1">&nbsp;
-                <input type="text" name="marks_12" id="%age_12"  placeholder="Percentage" tabindex="1"><br><br>
-                <label class="lab">Graduation :</label><input type="text" name="univ_grad" id="univ_grad"  placeholder="University/College" tabindex="1">&nbsp;
-                <input type="text" name="yop_grad" id="yop-grad"  placeholder="Year of passing" tabindex="1">&nbsp;
-                <input type="text" name="marks_grad" id="%age-grad"  placeholder="Percentage" tabindex="1"><br><br>
-                <label class="lab">Post Graduation :</label><input type="text" name="univ_pg" id="univ_pg"  placeholder="University/College" tabindex="1">&nbsp;
-                <input type="text" name="yop_pg" id="yop-pg"  placeholder="Year of passing" tabindex="1">&nbsp;
-                <input type="text" name="marks_pg" id="%age-pg"  placeholder="Percentage" tabindex="1">
-                 </div>
-                <input type="submit" id="btn2" value="submit" onClick="return change()">
-        </form>
-    </div>
-
-    </div>
+                    <h3  class="h33">Educational Details</h3>
+                    <hr class="hr1">
+                    <label class="lab">10th %age:</label>
+                    <select class="select form-control">
+                        <option value="Board">Board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ISC">ISC</option>
+                        <option value="IB">IB</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_10" id="yop-10"  placeholder="Year of passing" tabindex="1" class="form-control">&nbsp;
+                    <input type="text" name="marks_10" id="%age-10"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">12th %age:</label>
+                    <select class="select form-control">
+                        <option value="Board">Board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ISC">ISC</option>
+                        <option value="IB">IB</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_12" id="yop-12"  placeholder="Year of passing" tabindex="1" class="form-control">&nbsp;
+                    <input type="text" name="marks_12" id="%age-12"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">Graduation :</label>
+                    <select class="select form-control">
+                        <option value="University">University</option>
+                        <option value="NIT KKr">NIT KKR</option>
+                        <option value="NIT T">NIT T</option>
+                        <option value="Nit suratkal">NIT suratkal</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_grad" id="yop-grad"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
+                    <input type="text" name="course_grad" id="course_grad" placeholder="Course" class="form-control">&nbsp;
+                    <input type="text" name="stream_grad" id="stream_grad" placeholder="Stream" class="form-control">&nbsp;
+                    <input type="text" name="cgpa_grad" id="%age-grad"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">Post Graduation :</label>
+                    <select class="select form-control">
+                        <option value="University">University</option>
+                        <option value="NIT KKr">NIT KKR</option>
+                        <option value="NIT T">NIT T</option>
+                        <option value="Nit suratkal">NIT suratkal</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_pg" id="yop-pg"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
+                    <input type="text" name="course_pg" id="yop_course" placeholder="Course" class="form-control">&nbsp;
+                    <input type="text" name="stream_pg" id="yop_stream" placeholder="Stream" class="form-control">&nbsp;
+                    <input type="text" name="cgpa_pg" id="%age-pg"  placeholder="Percentage" class="form-control" tabindex="1">
+                </div>
+                <input type="submit" id="btn2" onClick="return change()" value="Submit">
+            </form></div></div>
+</div>
 </div>
 </body>
 </html>
