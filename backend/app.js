@@ -5,10 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
-var db = require('./model/db');
-var question = require('./model/questions');
-
 // for giving path in routes
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -17,16 +13,12 @@ var login = require('./routes/login');
 var rules = require('./routes/rules');
 var test = require('./routes/test');
 var studentdata =require('./routes/studentdata');
-
 var marks = require('./routes/marks');
-var testdet = require('./routes/testdet');
-var questions = require('./routes/questions');
 
 
 var bcrypt = require('bcrypt-nodejs');
 
 var app = express();
-
 // mysql connection
 /*var session = require('express-session')
  var MongoStore = require('connect-mongo')(session);*/
@@ -68,8 +60,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/registration', Registration);
@@ -78,14 +68,8 @@ app.use('/login', login);
 app.use('/test', test);
 app.use('/studentdata',studentdata);
 app.use('/marks', marks);
-app.use('/testdetails', testdet);
-
 
 // khatm my sql connection
-
-
-
-
 
 
 

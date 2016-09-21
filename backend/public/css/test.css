@@ -1,6 +1,44 @@
 body
 {
-background-color:grey;
+ overflow:hidden;
+ background-color:white	;
+}
+.nav-main
+{
+	background:grey;
+}
+#accordion
+{
+ overflow-y: scroll !important;
+ height: 600px;
+ background-color:grey;
+}
+.logo
+{
+	height:58px;
+	width:180px;
+}
+.btn_complete
+{
+ margin-top:12%;
+ padding:4%;
+border-radius:4px;
+}
+.meri_class{
+padding: 10px;
+margin-right: -20px;
+margin-top: 14px;
+box-shadow: 2px 3px 5px #303030;
+background-color: #008cba;
+font-size: 18px;
+font-weight: 400;
+height: 44px;
+width: 157px;
+border: 1px solid black;
+border-radius: 5px;
+color: white;
+text-align: center;
+z-index:100;
 }
 li
 {
@@ -11,6 +49,12 @@ li
 	list-style:none;
 	margin-left:-37px;
 }
+.h5_que .li_que
+{
+	border:white;
+	float:left;
+	text-align:left;
+}
 .question-panel
 {
 	padding:20px;
@@ -18,20 +62,19 @@ li
 	margin-left:18%;
 }
 .que{
-	text-align:center;
+	text-align:left;
 	border-color:#C5C5C1;
 	border-radius:4px;
 	width:60%;
+	color:black;
 	height:80%;
 }
 .btn
 {
 	border-radius:4px;
 	background-color:#inherit;
-	color:black;
-		
+	color:black;		
 }
-
 .prev_btn
 {
 	margin-top:120%;
@@ -41,7 +84,7 @@ li
 }
 .h5_que
 {
-	color:white;	
+	color:black;	
 	margin:0px;
 	height:auto;
 	font-size:18px;
@@ -53,26 +96,21 @@ li
 }
 #timer
 {
-font-size:24px;
-margin-left:50%;
-margin-right:-40%;
-margin-top:20px;Q
+	font-size: 24px;
+    margin-left: -252%;
+    margin-right: -58%;
+    margin-top: 36px;
+	float:left;
 }
 .list
-		{
-		background-color:#E5E7E9;
-		height:100%;
-		position:fixed;
-		}
-			.logo
-			{
-			height:58px;
-			width:180px;
-			}
-			.btn_complete
-			{
-				margin-top:12%;
-				padding:4%;
-				border-radius:4px;
-		}
-		
+{
+	background-color:#E5E7E9;
+	height:100%;
+	position:fixed;
+}
+.btn_complete
+{
+	margin-top:12%;
+	padding:4%;
+	border-radius:4px;
+}

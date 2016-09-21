@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Procured | Details</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/validate.js"></script>
+    <style>
+        body
+        {
+            background-image:url(images/stack-of-books-vintage-books-book-books-medium.jpg);
+        }
+
+        .logo
+        {
+            height:58px;
+            width:180px;
+        }
+        #btn2
+        {
+            padding:5px;
+            border-radius:5px;
+            color:inherit;
+            margin-left:80%;
+            color:black;
+            font-weight:bold;
+        }
+        .first{
+            margin:3%;
+            border-radius:4px;
+            z-index:4px;
+            color:black;
+            padding:10px;
+            background-color:white;
+            font-weight:bold;
+
+        }
+        .lab
+        {
+            text-align:right !important;
+        }
+        #btn2:hover
+        {
+            color:blue;
+        }
+        input
+        {
+            border-radius:4px;
+            margin-bottom:1%;
+            padding:5px;
+            margin-left:5px;
+        }
+        .hr1
+        {
+            border:2px solid grey;
+        }
+        .h33
+        {
+            font-weight:bolder;
+            color:#009999;
+        }
+        .select
+        {
+            margin-left:3px;
+            padding:5px;
+            border-radius:3px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"></span></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#top">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#team">TEAM</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container image1">
+    <div class="row">
+        <div class="col-md-12">
+            <form action='/studentdata'method="PUT">
+                <div class="form-group first">
+                    <h3 class="h33">Personal Details</h3>
+                    <hr class="hr1">
+                    <label class="lab">Name :</label>
+                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" id="last_name"   class="form-control" placeholder="Last Name" ><br>
+                    <label class="lab">D.O.B :</label>
+                    <input type="date" name="b_day" class="form-control" id="date"><br>
+                    <label class="lab">Gender :</label>
+                    <select class="select form-control">
+                        <option value="Gender">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option></select><br><br>
+                    <label class="lab">Student ID:</label>
+                    <input type="text" name="id" id="ID" placeholder="Student Id" class="form-control" ><br>
+                    <label class="lab">Email Id:</label>
+                    <input type="email" name="email_id" id="student_Id" placeholder="Email Id" class="form-control"><br>
+                    <label class="lab">Contact No.:</label>
+                    <input type="text" name="contact_no" id="contact_no" placeholder="Enter only 10 digits" class="form-control">
+                </div>
+                <div class="form-group first">
+                    <h3  class="h33">Educational Details</h3>
+                    <hr class="hr1">
+                    <label class="lab">10th %age:</label>
+                    <select class="select form-control">
+                        <option value="Board">Board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ISC">ISC</option>
+                        <option value="IB">IB</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_10" id="yop-10"  placeholder="Year of passing" tabindex="1" class="form-control">&nbsp;
+                    <input type="text" name="marks_10" id="%age-10"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">12th %age:</label>
+                    <select class="select form-control">
+                        <option value="Board">Board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ISC">ISC</option>
+                        <option value="IB">IB</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_12" id="yop-12"  placeholder="Year of passing" tabindex="1" class="form-control">&nbsp;
+                    <input type="text" name="marks_12" id="%age-12"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">Graduation :</label>
+                    <select class="select form-control">
+                        <option value="University">University</option>
+                        <option value="NIT KKr">NIT KKR</option>
+                        <option value="NIT T">NIT T</option>
+                        <option value="Nit suratkal">NIT suratkal</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_grad" id="yop-grad"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
+                    <input type="text" name="course_grad" id="course_grad" placeholder="Course" class="form-control">&nbsp;
+                    <input type="text" name="stream_grad" id="stream_grad" placeholder="Stream" class="form-control">&nbsp;
+                    <input type="text" name="cgpa_grad" id="%age-grad"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
+                    <label class="lab">Post Graduation :</label>
+                    <select class="select form-control">
+                        <option value="University">University</option>
+                        <option value="NIT KKr">NIT KKR</option>
+                        <option value="NIT T">NIT T</option>
+                        <option value="Nit suratkal">NIT suratkal</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input type="text" name="yop_pg" id="yop-pg"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
+                    <input type="text" name="course_pg" id="yop_course" placeholder="Course" class="form-control">&nbsp;
+                    <input type="text" name="stream_pg" id="yop_stream" placeholder="Stream" class="form-control">&nbsp;
+                    <input type="text" name="cgpa_pg" id="%age-pg"  placeholder="Percentage" class="form-control" tabindex="1">
+                </div>
+                <input type="submit" id="btn2" onClick="return change()" value="Submit">
+            </form></div></div>
+</div>
+</div>
+</body>
+</html>

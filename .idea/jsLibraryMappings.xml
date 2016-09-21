@@ -2,5 +2,9 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/backend" libraries="{backend-mysql/backend/node_modules}" />
+<<<<<<< HEAD
+=======
+    <file url="PROJECT" libraries="{mysql-DefinitelyTyped}" />
+>>>>>>> origin/master
   </component>
 </project>

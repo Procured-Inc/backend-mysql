@@ -1,3 +1,22 @@
+.row1
+{
+margin-top:10%;
+}
+body
+{
+background-image:url(images/pexels-photo-117018-medium.jpeg);
+background-repeat:no-repeat;
+background-size:cover;
+		}
+		image_border
+		{
+			border:1px solid black;
+		}
+		.logo
+			{
+			height:58px;
+			width:180px;
+			}
 body
 {
 background-image:url(images/stack-of-books-vintage-books-book-books-medium.jpg);
@@ -95,13 +114,13 @@ margin-top:50px;
 	font-weight: normal;
 	padding: 14px 0;
 	text-transform: uppercase;
-	border-color: #1CB94A;
+	border-color: #59B2E6;
 }
 .btn-register:hover,
 .btn-register:focus {
 	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
+	background-color: #59B2E6;
+	border-color: #59B2E6;
 }
 /* CSS Document */
 
