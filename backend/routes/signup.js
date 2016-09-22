@@ -18,11 +18,13 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+
+
 var signup=app.post('/', function (req, res) {
     connection.query('SELECT * from student_info where email_id=?', req.body.email, function (err, rows, fields) {
         if (rows.length != 0){
             req.session.already ="yes";
-            console.log('email is already registered');
+            console.log('{ "message" : "email is already registered" }');
             res.render(__dirname+ '/../views/alreadyregistered');
             console.log(rows)
 
@@ -89,6 +91,7 @@ var signup=app.post('/', function (req, res) {
                 } else {
 
                     res.render(__dirname+ '/../views/thankyou');
+                    console.log('{ "message" : "Signup Done" }');
                     //res.send('{ "message" : "Signup done!" }');
                 }
 

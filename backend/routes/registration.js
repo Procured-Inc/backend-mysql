@@ -7,7 +7,7 @@ router.get('/:username', function(req, res, next) {
     if(req.params.username===req.session.username)
     res.render('registration', { email: req.params.username });
     else{
-        res.send("Invalid");
+        res.send('{ "message" : "Please Login" }');
     }
 });
 
