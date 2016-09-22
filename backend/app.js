@@ -17,6 +17,7 @@ var bcrypt = require('bcrypt-nodejs');
 var complete=require('./routes/complete')
 var studentdata=require('./routes/studentdata');
 var signup = require('./routes/signup');
+var demo = require('./routes/demo');
 var login_auth=require('./routes/login_auth');
 var connection=require('./connection/mysql');
 var app = express();
@@ -60,6 +61,7 @@ app.use('/studentdata', studentdata);
 app.use('/login_auth',login_auth);
 app.use('/signup',signup);
 app.use('/complete',complete);
+app.use('/demo',demo);
 app.get('/result',function (err,res) {
     connection.query('SELECT student_info.first_name,student_info.contact_no,student_info.email_id,result_info.apti_marks,result_info.tech_marks from student_info,result_info where result_info.student_id=student_info.student_id', function (err, rows, fields) {
         res.send(rows);
@@ -74,9 +76,6 @@ app.get('/data/:id',function (req, err,res) {
         console.log(rows.current_cgpa)
     })
 });
-
-//transporter for mail
-
 
 
 // catch 404 and forward to error handler

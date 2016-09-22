@@ -8,7 +8,7 @@
   "dependencies": {
     "bcrypt-nodejs": "~0.0.2",
     "body-parser": "~1.15.1",
-    "bson": "*",
+    "bson": "^0.5.5",
     "connect-mongo": "^0.4.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",

@@ -1,0 +1,37 @@
+{
+	"question": {
+		"apti": [{
+			"answer": ["calculator","computing machine","electronic machine","all of the above"],
+			"correct": "",
+			"ques": "what is computer?",
+			"test-Id": "T1_ID"
+		}, {
+			"answer": ["512","618","-618","-512"],
+			"correct": "",
+			"ques": "what is the cube of -8?",
+			"test-Id": "T1_ID"
+		}],
+		"reasoning": [{
+			"answer": ["hi","hello","hiiii","helooo"],
+			"correct": "",
+			"ques": "what is reasonal?",
+			"test-Id": "T1_ID"
+		}, {
+			"answer": ["hi","hello","hiiii","helooo"],
+			"correct": "",
+			"ques": "what is Incture1?",
+			"test-Id": "T1_ID"
+		}],
+		"technical": [{
+			"answer": ["hi","hello","hiiii","helooo"],
+			"correct": "",
+			"ques": "what is technical?",
+			"test-Id": "T1_ID"
+		}, {
+			"answer": ["hi","hello","hiiii","helooo"],
+			"correct": "",
+			"ques": "what is Incture2?",
+			"test-Id": "T1_ID"
+		}]
+	}
+}
