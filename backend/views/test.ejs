@@ -19,7 +19,7 @@
     <script src="js/typed.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
-    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script>
         var appmod = angular.module("mainApp", []);
         appmod.controller('appController', ['$scope', function($scope) {
@@ -40,65 +40,68 @@
                 return arr
             };
 
-            $scope.getQuestion = function(cat, ques) {
-                console.log(cat, ques);
+            $scope.getQuestion = function(cat, qid) {
+                console.log(cat, qid);
+
+                $http.get("").then(function (res)
+                        {
+                            res = {
+                                "ques" : "adad",
+                                "option" : [
+                                    1, 2, 3, 4, 5
+                                ]
+                            }
+                            res.qid = qid
+                            $scope.question = res;
+                        },
+                        function(err) {
+                            console.log("error", err);
+                        }
+                )
             };
         }]);
     </script>
-    <style>
-        body
-        {
-            overflow:hidden;
-        }
-        #accordion
-        {
-            overflow-y: scroll !important;
-            height: 600px;
-        }
-        .logo
-        {
-            height:58px;
-            width:180px;
-        }
-        .btn_complete
-        {
-            margin-top:12%;
-            padding:4%;
-            border-radius:4px;
-        }
-    </style>
 </head>
+
 <body>
-<nav class="navbar navbar-default templatemo-nav" role="navigation">
+<nav class="navbar navbar-default templatemo-nav nav-main" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-            </button>
+            <!--<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            </button>-->
             <a href="#" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"> </span></a>
         </div>
         <div class="collapse navbar-collapse">
-            <div class="navbar-nav navbar-right">
-                <a href="cmplt_src.html"><span><button class="btn_complete">Complete test</button></span></a>
-            </div></div>
+
+            <div class="nav navbar-nav navbar-right text-center">
+                <div id="timer"></div>
+                <a href="/complete"><button class=" meri_class">Complete test</button></a>
+            </div>
+
+        </div>
     </div>
 </nav>
+
 <div class="row row_Slide" ng-app="mainApp" ng-controller="appController">
     <div class="col-md-2 list" >
-        <div class="panel-group" id="accordion">
+        <div class="panel-group" id="accordion{{$index}}">
             <div class="panel panel-default" ng-repeat="c in json">
                 <div class="panel-heading" >
                     <h4 class="panel-title" >
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{c.category}}</a>
+                        <a data-toggle="collapse" data-parent="#accordion{{$index}}" href="#collapse{{$index}}">{{c.category}}</a>
                     </h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse in">
+                <div id="collapse{{$index}}" class="panel-collapse collapse">
                     <div class="panel-body" >
                         <ul class="dropdown-toggle">
                             <p>Questions</p>
-                            <li ng-repeat="q in quesarr(c.question) track by $index" id="{{c.category}}_q_{{q}}"><a href="javascript:void(0)" ng-click="getQuestion(c.category, q)">Q.{{q}}</a></li>
+                            <li  ng-repeat="q in quesarr(c.question) track by $index" id="{{c.category}}_q_{{q}}">
+                                <a href="javascript:void(0)" ng-click="getQuestion(c.category, q)">Q.{{q}}</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -106,21 +109,26 @@
     </div>
     <div class="col-md-10 question-panel">
         <div class="col-md-2">
-            <button class="prev_btn"><img src="images/prev.png" height="10%"></button></div>
+           <-- <a href="#"><button class="prev_btn" onclick="return click()"><img src="" height="10%"></button></a>-->
+        </div>
         <div class="col-md-8 que">
-            <h5 class="h5_que">Q.1. What is Computer jdhdhvhjd hdbjdhdhfu hjuhdfhdhnfjkdn dhfydhfdhnfjrdh dhfyhfduhf dhfuhfhf hhfyhufh hfuehfen?</h5>
-            <input type="radio" value="machine1" name="mac">&nbsp;Machine 1<br>
-            <input type="radio" value="machin2" name="mac">&nbsp;Machine 2<br>
-            <input type="radio" value="machine3" name="mac">&nbsp;Machine 3<br>
-            <input type="radio" value="machine4" name="mac">&nbsp;Machine 4<br><br>
-            <input type="button" value="Clear" class="btn">&nbsp;
-            <input type="button" value="Submit" class="btn">
+            <h5 class="h5_que"><p class="li_que">Q1.</p>Which is a valid keyword in java?</h5>
+            <input type="radio" ng-repeat="op in question.option">{{op[i-1]}}<br>
+            <input type="radio" value="machine1" name="mac">&nbsp;interface<br>
+            <input type="radio" value="machin2" name="mac">&nbsp;string<br>
+            <input type="radio" value="machine3" name="mac">&nbsp;Float<br>
+            <input type="radio" value="machine4" name="mac">&nbsp;unsigned<br><br>
+            <div class="text-center">
+                <input type="button" value="Clear" class="btn">&nbsp;
+                <input type="button" value="Submit" class="btn">&nbsp;
+                <input type="checkbox"><b>Mark for review</b>
+            </div>
         </div>
         <div class="col-md-2">
-            <button class="prev_btn"><img src="images/next.png" height="10%"></button></div>
+            <a href="#"><button class="prev_btn"><img src="images/next.png" height="10%"></button></a>
+        </div>
     </div>
 </div>
-</div>
-
+<script src="js/timer.js"></script>
 </body>
 </html>
