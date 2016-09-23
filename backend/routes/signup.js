@@ -73,7 +73,7 @@ var signup = app.post('/', function (req, res) {
 
             });
             // sending mail
-            var link = "http://localhost:5000/login_user";
+            var link = "http://178.33.132.20:5000/login_user";
 
             var text = 'Hello your username is:  ' + req.body.email
                 + '\n Your password is: ' + randomnumber +
