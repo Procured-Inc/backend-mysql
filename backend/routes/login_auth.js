@@ -8,12 +8,14 @@ var connection=require('../connection/mysql');
 var registration=require('../routes/registration');
 
 
-//transporter for mail
+
 
 
 var login_auth= app.post('/', function (reqs, response) {
 
     var post = reqs.body;
+
+///////////// check if username is present
 
     connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
         if (rows.length === 0)

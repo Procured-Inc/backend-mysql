@@ -1,6 +1,4 @@
-/**
- * Created by Shubhampatidar on 9/19/2016.
- */
+// contains mysql connection
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: '178.33.132.20',

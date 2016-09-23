@@ -1,7 +1,7 @@
 var  express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET registrationpage. */
 router.get('/:username', function(req, res, next) {
     console.log(req.params.username)
     if(req.params.username===req.session.username)

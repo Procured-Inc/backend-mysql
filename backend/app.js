@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var http = require('http');
 // for giving path in routes
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -62,20 +62,16 @@ app.use('/login_auth',login_auth);
 app.use('/signup',signup);
 app.use('/complete',complete);
 app.use('/demo',demo);
+
+
 app.get('/result',function (err,res) {
     connection.query('SELECT student_info.first_name,student_info.contact_no,student_info.email_id,result_info.apti_marks,result_info.tech_marks from student_info,result_info where result_info.student_id=student_info.student_id', function (err, rows, fields) {
         res.send(rows);
 
     })
 });
-app.get('/data/:id',function (req, err,res) {
-    console.log(req.params.id);
-    connection.query('SELECT * from student_info where student_id=?', req.params.id, function (err, rows, fields) {
-       // res.send(rows);
-        //res.send('user' + req.params.id);
-        console.log(rows.current_cgpa)
-    })
-});
+
+
 
 
 // catch 404 and forward to error handler
@@ -109,5 +105,13 @@ app.use(function (err, req, res, next) {
     });
 });
 
+
+
+
+
+
+/**
+ * Module dependencies.
+ */
 
 module.exports = app;

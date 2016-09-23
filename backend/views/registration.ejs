@@ -160,8 +160,20 @@
                         <option value="Nit suratkal">NIT suratkal</option>
                         <option value="other">Other</option></select>&nbsp;
                     <input type="text" name="yop_grad" id="yop-grad"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
-                    <input type="text" name="course_grad" id="course_grad" placeholder="Course" class="form-control">&nbsp;
-                    <input type="text" name="stream_grad" id="stream_grad" placeholder="Stream" class="form-control">&nbsp;
+                    <select class="select form-control" name="Course_name">
+                        <option value="Course">course</option>
+                        <option value="B.com">B.com</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="B.E">B.E</option>
+                        <option value="other">Other</option></select>&nbsp;
+                    <input list="courses" type="text"  name="stream_grad" id="stream_grad" placeholder="Stream" class="form-control">&nbsp;
+                    <datalist id="courses">
+                        <option value="CS">
+                        <option value="IS">
+                        <option value="EC">
+                        <option value="MECH">
+                        <option value="IP">
+                    </datalist>
                     <input type="text" name="cgpa_grad" id="%age-grad"  placeholder="Percentage" tabindex="1" class="form-control"><br><br>
                     <label class="lab">Post Graduation :</label>
                     <select class="select form-control" name="univpg_name">
@@ -171,8 +183,21 @@
                         <option value="Nit suratkal">NIT suratkal</option>
                         <option value="other">Other</option></select>&nbsp;
                     <input type="text" name="yop_pg" id="yop-pg"  placeholder="Year of passing" class="form-control" tabindex="1">&nbsp;
-                    <input type="text" name="course_pg" id="yop_course" placeholder="Course" class="form-control">&nbsp;
-                    <input type="text" name="stream_pg" id="yop_stream" placeholder="Stream" class="form-control">&nbsp;
+                    <select class="select form-control" name="Course_name">
+                        <option value="Course">course</option>
+                        <option value="B.com">M.com</option>
+                        <option value="B.Tech">M.Tech</option>
+                        <option value="B.E">MBA</option>
+                        <option value="other">Other</option></select>&nbsp;
+
+                    <input list="courses" type="text" name="stream_pg" id="yop_stream" placeholder="Stream" class="form-control">&nbsp;
+                    <datalist id="courses">
+                        <option value="CS">
+                        <option value="IS">
+                        <option value="EC">
+                        <option value="MECH">
+                        <option value="IP">
+                    </datalist>
                     <input type="text" name="cgpa_pg" id="%age-pg"  placeholder="Percentage" class="form-control" tabindex="1">
                 </div>
                 <input type="submit" id="btn2" onClick="return change()" value="Submit">
