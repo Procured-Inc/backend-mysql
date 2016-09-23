@@ -19,7 +19,6 @@ var login_auth= app.post('/', function (reqs, response) {
 
     connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
         if (rows.length === 0){
-            reqs.session.popup="userinvalid",
             response.redirect('/login_user');
             console.log(reqs.session)
            // response.send('{ "message" : "username invalid" }');
@@ -44,9 +43,8 @@ var login_auth= app.post('/', function (reqs, response) {
 
                 }
                 else {
-                    reqs.session.popup="invalidpassword",
                         response.redirect('/login_user');
-                    console.log('u are in else')
+                        console.log('u are in else')
                 }
             });
 
