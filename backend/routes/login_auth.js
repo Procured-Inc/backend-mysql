@@ -18,26 +18,34 @@ var login_auth= app.post('/', function (reqs, response) {
 ///////////// check if username is present
 
     connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
-        if (rows.length === 0)
-            console.log('{ "message" : "username invalid" }');
+        if (rows.length === 0){
+            reqs.session.popup="userinvalid",
+            response.redirect('/login_user');
+            console.log(reqs.session)
+           // response.send('{ "message" : "username invalid" }');
 
+
+            }
 
         else {
             console.log(rows[0].pass_word);
             console.log(post.pass_word);
+
+            //// bcrypt for comparing entered password and password from db
             bcrypt.compare(post.pass_word, rows[0].pass_word,function (err, res) {
 
                 if(err)
                     console.log(err, res)
                 if (res) {
-                    //response.render(__dirname+ '/../views/registration');
+
                     reqs.session.username=post.user_name;
                     response.redirect('/registration/'+post.user_name)
                     console.log('{ "message" : "Authentication done" }');
 
                 }
                 else {
-                    response.send('{ "message" : "username invalid" }');
+                    reqs.session.popup="invalidpassword",
+                        response.redirect('/login_user');
                     console.log('u are in else')
                 }
             });

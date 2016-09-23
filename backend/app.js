@@ -20,6 +20,7 @@ var signup = require('./routes/signup');
 var demo = require('./routes/demo');
 var login_auth=require('./routes/login_auth');
 var connection=require('./connection/mysql');
+var popup=require('./routes/popup');
 var app = express();
 // mysql connection
 
@@ -38,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var session = require('express-session')
 var MongoStore = require('connect-mongo')(session);
 var store = new MongoStore({
-    url: 'localhost',
+    url: '178.33.132.20',
     db: 'session_db',
     collection: 'session'
 });
@@ -48,7 +49,7 @@ app.use(session({
     secret: 'dfjhsksdfdhfr879487',
     saveUninitialized: true,
     resave: true,
-    cookie: {httpOnly: true, maxAge: 1000 * 60 * 60 * 2}
+    cookie: {httpOnly: true, maxAge: 1000 * 60 *5}
 }));
 
 app.use('/', index);
@@ -62,7 +63,7 @@ app.use('/login_auth',login_auth);
 app.use('/signup',signup);
 app.use('/complete',complete);
 app.use('/demo',demo);
-
+app.use('/popup',popup)
 
 app.get('/result',function (err,res) {
     connection.query('SELECT student_info.first_name,student_info.contact_no,student_info.email_id,result_info.apti_marks,result_info.tech_marks from student_info,result_info where result_info.student_id=student_info.student_id', function (err, rows, fields) {

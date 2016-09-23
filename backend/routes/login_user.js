@@ -3,8 +3,9 @@ var router = express.Router();
 
 /* GET log in page. */
 router.get('/', function(req, res, next) {
-    //var x = req.session === undefined ? "no" : "yes";
-    res.render('login_user');
+    var x = 'normal' ;
+    x = req.session.popup ;
+    res.render('login_user',{ value: x });
 });
 
 module.exports = router;
