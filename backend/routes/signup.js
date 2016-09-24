@@ -77,7 +77,7 @@ var signup = app.post('/', function (req, res) {
 
             var text = 'Hello your username is:  ' + req.body.email
                 + '\n Your password is: ' + randomnumber +
-                " \n Please complete ur profile before test by clicking on following link \n \n " + link;
+                " \n Please complete ur profile before test by clicking on following link : \n \n " + link;
 
 
             var mailOptions = {
