@@ -58,7 +58,7 @@ var signup = app.post('/', function (req, res) {
                 var post2 = {
                     email_id: req.body.email,
                     contact_no: req.body.contact_no,
-                    student_id: Math.floor((Math.random() * 1000) + 1)
+                    student_id: Math.floor((Math.random() * 48850) + 546465)
                 }
                 console.log(post2);
                 var query1 = connection.query('INSERT INTO student_info SET ?', post2, function (err, result) {
