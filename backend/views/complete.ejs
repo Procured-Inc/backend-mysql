@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>PROCURED | Complete test</title>
+    <title>Procured | Details</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -13,18 +13,47 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/typed.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/validate.js"></script>
     <style>
         body
         {
-            background-image:url("images/sub.jpg");
-            background-size:cover;
-            background-repeat:no-repeat;
+            background-image:url(images/stack-of-books-vintage-books-book-books-medium.jpg);
+        }
+
+        .logo
+        {
+            height:58px;
+            width:180px;
+        }
+        #btn2
+        {
+            padding:5px;
+            border-radius:5px;
+            color:inherit;
+            margin-left:80%;
+            color:black;
+            font-weight:bold;
+        }
+        .first{
+            margin:3%;
+            border-radius:4px;
+            z-index:4px;
+            color:black;
+            padding:10px;
+            background-color:white;
+            font-weight:bold;
+
+        }
+        .lab
+        {
+            text-align:right !important;
         }
         .meri_class
         {
@@ -42,28 +71,83 @@
             text-align: center;
             z-index:100;
         }
+        input
+        {
+            border-radius:4px;
+            margin-bottom:1%;
+            padding:5px;
+            margin-left:5px;
+        }
+        .hr1
+        {
+            border:2px solid grey;
+        }
+        .h33
+        {
+            font-weight:bolder;
+            color:#009999;
+        }
+        .select
+        {
+            margin-left:3px;
+            padding:5px;
+            border-radius:3px;
+        }
     </style>
 </head>
-<body id="top">
-
-<!-- start navigation -->
+<body>
 <nav class="navbar navbar-default templatemo-nav" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a href="/" class="navbar-brand"><img src="images/Logo (New).png" width="180px" height="58px"></a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"></span></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#top">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#team">TEAM</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
         </div>
     </div>
 </nav>
-<!-- end navigation -->
-<div class="row">
-    <div class="col-md-12 text-center">
-        <h1>Test Completed!!</h1>
-        <div id="fb">
-            <h4>Feedback</h4>
-            <textarea rows="10" cols="50" style="color:black" placeholder="Enter Feedback Here..."></textarea>
-        </div>
-        <a href="/"><button class="meri_class">Submit</button></a>
-    </div>
+<h2 style="margin-left:0px"> <span>Test Completed!!</span></h2>
+<div class="container image1">
+    <div style="margin-left:100px" class="row">
+        <div style="margin-left:100px" class="col-md-9">
+            <form action="login_user.html">
+                <div class="form-group first">
+                    <h3 class="h33">Feedback</h3>
+                    <hr class="hr1">
+
+
+                    <div>
+                        <h3 style="margin-left:100px" >Are you first time here : <input type="radio" name="yes or no"  /> <span>  Yes </span>  <input type="radio" name="yes or no"  />   No  </h3>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-left:100px">Rate your experience :   5  <input type="radio" name="rate"  /> 4 <input type="radio" name="rate"  />  3  <input type="radio" name="rate"  />  2  <input type="radio" name="rate"  />  1  <input type="radio" name="rate"  />
+                    </div>
+
+                    <div>
+                        <h3 style="margin-left:100px">  Tell us anything new you would love to see   :  </h3>
+                        <textarea rows="5" cols="52" style="margin-left:125px" style="color:black" placeholder="Enter Feedback Here..."></textarea>
+
+                    </div>
+
+
+
+                </div>
+                <a style="margin-left:300px" href="index.html"><button class="meri_class">Submit</button></a>
+            </form></div></div>
+</div>
 </div>
 </body>
 </html>
