@@ -36,10 +36,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var session = require('express-session')
+var session = require('express-session');
+// console.log("session >> ", session)
 var MongoStore = require('connect-mongo')(session);
+// console.log("Mongostore obj >> ", MongoStore)
 var store = new MongoStore({
-    url: '178.33.132.20',
+    url: 'mongodb://178.33.132.20',
     db: 'session_db',
     collection: 'session'
 });
@@ -49,8 +51,9 @@ app.use(session({
     secret: 'dfjhsksdfdhfr879487',
     saveUninitialized: true,
     resave: true,
-    cookie: {httpOnly: true, maxAge: 1000 * 60 *5}
+    cookie: {httpOnly: true, maxAge: 1000 *10}
 }));
+
 
 app.use('/', index);
 app.use('/registration', registration);
