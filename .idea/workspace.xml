@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47ae5bd7-6365-4a48-bc48-eb5d264e44e2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/public/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/backend/public/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/routes/signup.js" afterPath="$PROJECT_DIR$/backend/routes/signup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/views/index.ejs" afterPath="$PROJECT_DIR$/backend/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/views/registration.ejs" afterPath="$PROJECT_DIR$/backend/views/registration.ejs" />
     </list>
     <list id="ba7aad8a-f7c3-456c-9017-095bf54f6568" name="Rejected commit: Default" comment="" />
     <ignored path="backend-mysql.iws" />
@@ -401,7 +397,7 @@
       <workItem from="1474374804077" duration="10359000" />
       <workItem from="1474432172564" duration="50266000" />
       <workItem from="1474562402582" duration="2126000" />
-      <workItem from="1474605899341" duration="42889000" />
+      <workItem from="1474605899341" duration="42910000" />
     </task>
     <task id="LOCAL-00001" summary="Rejected commit: Default">
       <created>1474375496595</created>
@@ -550,11 +546,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474713049852</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="registration form revamped&#10;">
+      <created>1474736428638</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1474736428638</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105640000" />
+    <option name="totallyTimeSpent" value="105661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
@@ -594,7 +597,8 @@
     <MESSAGE value="Rejected commit: Default" />
     <MESSAGE value="alert inserted" />
     <MESSAGE value="index page aligned" />
-    <option name="LAST_COMMIT_MESSAGE" value="index page aligned" />
+    <MESSAGE value="registration form revamped&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration form revamped&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
