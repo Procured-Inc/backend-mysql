@@ -16,7 +16,7 @@ var login_auth= app.post('/', function (reqs, response) {
     var post = reqs.body;
 
 
-///////////// check if username is present
+///////////// check if username is present and if not present display alert by passing popup message to login_user
 
     connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
         if (rows.length === 0){
@@ -33,6 +33,7 @@ var login_auth= app.post('/', function (reqs, response) {
             console.log(post.pass_word);
 
             //// bcrypt for comparing entered password and password from db
+            /// bcrypt is npm package
             bcrypt.compare(post.pass_word, rows[0].pass_word,function (err, res) {
 
                 if(err)

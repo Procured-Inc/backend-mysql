@@ -20,7 +20,6 @@ var signup = require('./routes/signup');
 var demo = require('./routes/demo');
 var login_auth=require('./routes/login_auth');
 var connection=require('./connection/mysql');
-var popup=require('./routes/popup');
 var testid=require('./routes/testid');
 var app = express();
 var cors=require('cors');
@@ -69,7 +68,6 @@ app.use('/login_auth',login_auth);
 app.use('/signup',signup);
 app.use('/complete',complete);
 app.use('/demo',demo);
-app.use('/popup',popup);
 app.use('/testid',testid);
 
 app.get('/result',function (err,res) {
