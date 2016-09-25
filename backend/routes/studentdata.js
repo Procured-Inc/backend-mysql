@@ -9,7 +9,10 @@ var connection=require('../connection/mysql');
 //router.route('/').post(function (req, res) {
 var studentdata=app.post('/',function (req, res) {
     console.log('inside');
-    console.log(req.query);
+
+    console.log( req.body.id,'student id');
+    req.session.sid=req.body.id;
+    console.log( req.session.sid,'student id');
     var post = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -39,7 +42,8 @@ var studentdata=app.post('/',function (req, res) {
         console.log(err);
         console.log('query done');
 
-        res.render(__dirname+ '/../views/rules');
+
+        res.redirect('/testid');
     });
 });
 module.exports=studentdata;

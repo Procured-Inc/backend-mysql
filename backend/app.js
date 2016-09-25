@@ -21,7 +21,10 @@ var demo = require('./routes/demo');
 var login_auth=require('./routes/login_auth');
 var connection=require('./connection/mysql');
 var popup=require('./routes/popup');
+var testid=require('./routes/testid');
 var app = express();
+var cors=require('cors');
+
 // mysql connection
 
 // view engine setup
@@ -51,10 +54,10 @@ app.use(session({
     secret: 'dfjhsksdfdhfr879487',
     saveUninitialized: true,
     resave: true,
-    cookie: {httpOnly: true, maxAge: 1000 *10}
+    cookie: {httpOnly: true, maxAge: 1000 *10*10}
 }));
 
-
+app.use(cors());
 app.use('/', index);
 app.use('/registration', registration);
 app.use('/rules', rules);
@@ -66,7 +69,8 @@ app.use('/login_auth',login_auth);
 app.use('/signup',signup);
 app.use('/complete',complete);
 app.use('/demo',demo);
-app.use('/popup',popup)
+app.use('/popup',popup);
+app.use('/testid',testid);
 
 app.get('/result',function (err,res) {
     connection.query('SELECT student_info.first_name,student_info.contact_no,student_info.email_id,result_info.apti_marks,result_info.tech_marks from student_info,result_info where result_info.student_id=student_info.student_id', function (err, rows, fields) {
@@ -77,7 +81,11 @@ app.get('/result',function (err,res) {
 
 
 
-
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PROCURED | Complete test</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+    <style>
+        body
+        {
+            background-image:url("images/sub.jpg");
+            background-size:cover;
+            background-repeat:no-repeat;
+        }
+        .meri_class
+        {
+            padding: 10px;
+            margin-top: 7px;
+            box-shadow: 2px 3px 5px #303030;
+            background-color: #008cba;
+            font-size: 16px;
+            font-weight: 400;
+            height: 40px;
+            width: 140px;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            z-index:100;
+        }
+    </style>
+    <style>
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 300px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+        body{
+            color:black;
+        }
+        input[type=text]:focus {
+            width: 100%;
+        }
+    </style>
+</head>
+<body id="top">
+
+<!-- start navigation -->
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand"><img src="images/Logo (New).png" width="180px" height="58px"></a>
+        </div>
+    </div>
+</nav>
+<!-- end navigation -->
+<center>
+    <h2> <span> Enter your Test ID </span> </h2>
+    <form action='/rules' role="form">
+        <input type="text"  style="colour:black" name="test_id" placeholder="Test ID">
+
+    <button class="meri_class">Submit</button>
+    </form>
+</center>
+</body>
+</html>
