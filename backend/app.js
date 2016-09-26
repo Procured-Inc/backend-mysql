@@ -22,9 +22,8 @@ var login_auth=require('./routes/login_auth');
 var connection=require('./connection/mysql');
 var testid=require('./routes/testid');
 var app = express();
-var cors=require('cors');
-
-// mysql connection
+var feedback=require('./routes/feedback');
+var admin_auth=require('./routes/admin_auth')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var session = require('express-session');
 // console.log("session >> ", session)
+
 var MongoStore = require('connect-mongo')(session);
 // console.log("Mongostore obj >> ", MongoStore)
 var store = new MongoStore({
@@ -56,7 +56,7 @@ app.use(session({
     cookie: {httpOnly: true, maxAge: 1000 *10*10}
 }));
 
-app.use(cors());
+
 app.use('/', index);
 app.use('/registration', registration);
 app.use('/rules', rules);
@@ -69,7 +69,8 @@ app.use('/signup',signup);
 app.use('/complete',complete);
 app.use('/demo',demo);
 app.use('/testid',testid);
-
+app.use('/feedback',feedback);
+app.use('/admin_auth',admin_auth);
 app.get('/result',function (err,res) {
     connection.query('SELECT student_info.first_name,student_info.contact_no,student_info.email_id,result_info.apti_marks,result_info.tech_marks from student_info,result_info where result_info.student_id=student_info.student_id', function (err, rows, fields) {
         res.send(rows);

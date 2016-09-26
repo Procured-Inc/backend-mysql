@@ -17,12 +17,12 @@ var login_auth= app.post('/', function (reqs, response) {
     connection.query('SELECT pass_word from authentication where user_name=?', post.user_name, function (err, rows) {
         if (rows.length === 0){
             reqs.session.popup="invalidusername";
-            response.redirect('/login_user');
+            response.redirect('/login_admin');
             console.log(reqs.session)
-           // response.send('{ "message" : "username invalid" }');
+            // response.send('{ "message" : "username invalid" }');
 
 
-            }
+        }
 
         else {
             console.log(rows[0].pass_word);
@@ -37,15 +37,14 @@ var login_auth= app.post('/', function (reqs, response) {
                 if (res) {
 
                     reqs.session.username=post.user_name;
-                    response.redirect('/registration/'+post.user_name)
+                    response.redirect('http://178.33.132.20:9999/dashboard.html');
                     console.log('{ "message" : "Authentication done" }');
 
                 }
 
                 ///notify to user if password enterd is incorrect
                 else {
-                    reqs.session.popup="invalidpassword",
-                        response.redirect('/login_user');
+                        response.redirect('/login_admin');
                     console.log('u are in else')
                 }
             });

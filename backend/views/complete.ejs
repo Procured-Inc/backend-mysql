@@ -122,23 +122,25 @@
 <div class="container image1">
     <div style="margin-left:100px" class="row">
         <div style="margin-left:100px" class="col-md-9">
-            <form action="login_user.html">
+            <form action="/feedback">
                 <div class="form-group first">
                     <h3 class="h33">Feedback</h3>
                     <hr class="hr1">
 
 
                     <div>
-                        <h3 style="margin-left:100px" >Are you first time here : <input type="radio" name="yes or no"  /> <span>  Yes </span>  <input type="radio" name="yes or no"  />   No  </h3>
+                        <h3 style="margin-left:100px"class="form-group" name="newuser" >Are you first time here :Yes  <input type="radio" name="YN" id="r1" value="yes"  />   No  <input type="radio" name="YN" id="r2" value="no"  />     </h3>
                     </div>
 
                     <div>
-                        <h3 style="margin-left:100px">Rate your experience :   5  <input type="radio" name="rate"  /> 4 <input type="radio" name="rate"  />  3  <input type="radio" name="rate"  />  2  <input type="radio" name="rate"  />  1  <input type="radio" name="rate"  />
+                        <h3 style="margin-left:100px" class="form-group" name="exp">Rate your experience :   5  <input type="radio" name="rate" value="5"  /> 4 <input type="radio" name="rate" value="4" />  3  <input type="radio" name="rate" value="3" />  2  <input type="radio" name="rate"  value="2" />  1  <input type="radio" name="rate"  value="1" />  </h3>
+
+
                     </div>
 
                     <div>
                         <h3 style="margin-left:100px">  Tell us anything new you would love to see   :  </h3>
-                        <textarea rows="5" cols="52" style="margin-left:125px" style="color:black" placeholder="Enter Feedback Here..."></textarea>
+                        <textarea rows="5" cols="52" style="margin-left:125px" style="color:black" name="feedback" placeholder="Enter Feedback Here..."></textarea>
 
                     </div>
 

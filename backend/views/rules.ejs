@@ -32,7 +32,7 @@
                 console.log(rows)
             window.open ("/test", "testWindow", "width='window.screen.availWidth',height='window.screen.availHeight',toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=0, copyhistory=no");
             $.ajax({
-                url:"http://10.42.0.1:3000/test/start/"+'<%=testid%>',
+                url:"http://192.168.1.147:3000/test/start/"+'<%=testid%>',
                 contentType:"application/JSON",
                 datatype:'json',
                 method:"POST",
