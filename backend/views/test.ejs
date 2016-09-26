@@ -259,7 +259,7 @@
 
             $http({
                 method: 'GET',
-                url: 'http://178.33.132.20:10000/test/starttest/'+'<%=testid%>'
+                url: 'http://178.33.132.20:10000/test/starttest/'+'<%=testid%>',
             }).then(function (response) {
 
                 var_test_id = response.data.testID;
@@ -307,14 +307,14 @@
                         }
                     }
                     if(current_minutes==00 && seconds==30)    {
-                        alert("2 minutes left");
+                        alert("30 seconds left");
                     }
                     if(current_minutes==0 && seconds==0)    {
                         $scope.final2();
-                        window.open("cmplt_src.html","_self");     }
+                        window.open("/complete","_self");     }
                 }
                 tick();
-            };$scope.countdown(1);
+            };$scope.countdown(2);
 
             $scope.prev = function() {
                 $scope.getQuestion(var_cat,(var_qid)-1);
