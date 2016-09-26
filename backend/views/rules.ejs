@@ -31,8 +31,8 @@
                 }
                 console.log(rows)
             window.open ("/test", "testWindow", "width='window.screen.availWidth',height='window.screen.availHeight',toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=0, copyhistory=no");
-            $.ajax({
-                url:"http://192.168.1.147:3000/test/start/"+'<%=testid%>',
+           /*$.ajax({
+                url:"http://192.168.1.147:3000/test/start/"+,
                 contentType:"application/JSON",
                 datatype:'json',
                 method:"POST",
@@ -41,6 +41,7 @@
                 data:rows,
                 success:function(data)
                 {
+                    console.log("sdf")
                     console.log(data);
                     return data;
                 },
@@ -48,7 +49,8 @@
                 {
                     console.log(err,"errororooror");
                 }
-            });
+
+            });*/
         }
     </script>
     <style>
@@ -68,11 +70,11 @@
         }
     </style>
 </head>
-<body onLoad="Init();">
+<body>
 <nav class="navbar navbar-default templatemo-nav" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"></span></a>
+            <a href="/" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"></span></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -109,7 +111,7 @@
             <p class="rules">16. You can mark a question for review if you are unsure about the answer.</p>
             <p class="rules">17. You can browse between questions using the grid navigator. The Answered questions appear as green, the marked for review questions as yellow and the unanswered as white.</p>
         </div>
-        <center><!--<a href="/test">--><button id="btn2" onclick="OpenTestWindow()">Start Test</button><!--</a>--></center>
+        <center><!--<a href="">--><button id="btn2" onclick="OpenTestWindow()">Start Test</button><!--</a>--></center>
     </div>
 </div>
 <div id="info"></div>

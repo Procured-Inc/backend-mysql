@@ -22,65 +22,427 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script>
         var appmod = angular.module("mainApp", []);
-        appmod.controller('appController', ['$scope', function($scope) {
-            $scope.json = [{
-                "category": "Apptitude",
-                "question": "5"
-            }, {
-                "category": "Technical",
-                "question": "7"
-            }, {
-                "category": "Reasoning",
-                "question": "7"
-            }];
+        appmod.controller('appController', ['$scope','$http', '$window', function($scope,$http,$window) {
+            //service call
+            $scope.categories=["apti","tech","psycho"];
+            $scope.json=[]
+            $scope.ans_apti=[]
+            $scope.ans_psycho=[]
+            $scope.ans_tech=[]
+            $scope.answer_mark={}
+            $scope.option = {};
+            $scope.final_ans = {};
+            $scope.answer1={"apti":"","tech":"","psycho":""}
+            $scope.questions={}
+            $scope.clearfn = clearfn;
+            $scope.sbmtfn = sbmtfn;
+            $scope.mark1 = mark1;
+            $scope.final2 = final2;
+            $scope.var_ans = "";
+            $scope.syn1 = "apti_q_";
+            $scope.syn2 = "tech_q_";
+            $scope.syn3 = "psycho_q_";
+            $scope.button = "Mark for review"
+            $scope.var_test_id,$scope.var_id;
+            /*scope.prev= prev;
+             $scope.next=next;*/
+            $scope.var_qid,$scope.var_cat,$scope.length1;
+            // console.log($scope.syn1);
+            $scope.text = true;
+            $scope.btn_clear = false;
+            $scope.btn_submit = false;
+            $scope.btn_mark = false;
 
-            $scope.quesarr = function(v) {
+            function clearfn ()  {
+                $scope.option.value = '';
+                color3(var_qid);
+            }
+            function color3(q)
+            {
+                if(var_cat=="apti")
+                {
+                    document.getElementById($scope.syn1+q).style.background="white";
+                }
+                else if(var_cat=="tech")
+                {
+                    document.getElementById($scope.syn2+q).style.background="white";
+                }
+                else if(var_cat=="psycho")
+                {
+                    document.getElementById($scope.syn3+q).style.background="white";
+                }
+            }
+
+            function color(v,q){
+                if(v=="apti")
+                {
+                    document.getElementById($scope.syn1+q).style.background = "green";
+                }
+                else if(v=="tech")
+                {
+                    document.getElementById($scope.syn2+q).style.background = "green";
+                }
+                else if(v=="psycho")
+                {
+                    document.getElementById($scope.syn3+q).style.background = "green";
+                }
+                $scope.getQuestion(var_cat,var_qid+1)
+            }
+
+            function mark1(){
+                if(document.getElementById("mark").value=="Mark for review")
+                {
+                    if(var_cat=="apti")
+                    {
+                        document.getElementById($scope.syn1+var_qid).style.border = "1px solid red";
+                    }
+                    else if(var_cat=="tech")
+                    {
+                        document.getElementById($scope.syn2+var_qid).style.border = "1px solid red";
+                    }
+                    else if(var_cat=="psycho")
+                    {
+                        document.getElementById($scope.syn3+var_qid).style.border = "1px solid red";
+                    }
+                }
+                else if(document.getElementById("mark").value=="Unmark for review")
+                {
+                    if(var_cat=="apti")
+                    {
+                        document.getElementById($scope.syn1+var_qid).style.border = "1px solid #ccc"
+                        document.getElementById("mark").value="Mark for review";
+                    }
+
+                    else if(var_cat=="tech")
+                    {
+                        document.getElementById($scope.syn2+var_qid).style.border = "1px solid #ccc";
+                        document.getElementById("mark").value="Mark for review";
+                    }
+
+                    else if(var_cat=="psycho")
+                    {
+                        document.getElementById($scope.syn3+var_qid).style.border = "1px solid #ccc";
+                        document.getElementById("mark").value="Mark for review";
+                    }
+                }
+            }
+
+
+            function check(){
+                if(var_cat=="apti")
+                {
+                    if(document.getElementById($scope.syn1+var_qid).style.border=="1px solid red")
+                    {
+                        document.getElementById("mark").value="Unmark for review";
+                    }
+                }
+                if(var_cat=="tech")
+                {
+                    if(document.getElementById($scope.syn2+var_qid).style.border=="1px solid red")
+                    {
+                        document.getElementById("mark").value="Unmark for review";
+                    }}
+                if(var_cat=="psycho")
+                {
+                    if(document.getElementById($scope.syn3+var_qid).style.border=="1px solid red")
+                    {
+                        document.getElementById("mark").value="Unmark for review";
+                    }
+                }
+            }
+            /*else
+             {
+             document.getElementById("mark").value="Mark for review";
+             }*/
+
+
+            function sbmtfn(obj)
+            {
+                //      console.log(obj)
+
+                /*for(var i=0;i< $scope.ans_apti.length;i++)
+                 {
+                 if($scope.ans_apti[i].qID === qID){ ansq = $scope.ans_apti[i].answer
+                 document.getElementById("radio_"+ ansq).checked = true;break;}
+
+                 }
+                 */
+                //    console.log($scope.option);
+                var_ans = $scope.option.value;
+                /*if(var_ans==" ")
+                 {
+                 getQuestion
+                 }*/
+                switch(var_cat)
+                {
+                    case "apti":
+                        $scope.answer_apti = {
+                            'qID':var_qid,
+                            'answer':var_ans,
+                            '_id':var_id,
+
+                        };
+                        break;
+                    case "tech":
+                        $scope.answer_tech = {
+                            'qid':var_qid,
+                            'answer':var_ans,
+                            '_id':var_id,
+                        };
+                        break;
+                    case "psycho":
+                        $scope.answer_psycho = {
+                            'qid':var_qid,
+                            'answer':var_ans,
+                            '_id':var_id,
+                        };
+                        break;
+                }
+
+                if(var_cat=="apti")
+                {
+                    $scope.ans_apti.push($scope.answer_apti);
+
+                    //  console.log($scope.ans_apti);
+                }
+
+                if( var_cat=="tech")
+                {
+                    $scope.ans_tech.push($scope.answer_tech);
+                    //   console.log($scope.ans_tech);
+                }
+
+                if(var_cat=="psycho")
+                {
+                    $scope.ans_psycho.push($scope.answer_psycho);
+                    //    console.log($scope.ans_psycho);
+                }
+
+
+                color(var_cat,var_qid);
+                /*$scope.getQuestion(var_cat,var_qid+1)*/
+            }
+
+
+            function final2(){
+                $scope.date = new Date().toISOString();
+
+                $scope.final_ans = {
+                    'student_id': "",
+                    'endtime' : $scope.date,
+                    'answers' : [
+                        {'apti': $scope.ans_apti===undefined?[]:$scope.ans_apti},
+                        {'tech' : $scope.ans_tech===undefined?[]:$scope.ans_tech},
+                        {'psycho' : $scope.ans_psycho===undefined?[]:$scope.ans_psycho}
+                    ]
+                }
+                console.log($scope.final_ans)
+                $.ajax({
+                    url:"http://192.168.1.147:3000/test/stop/TI_ID",
+                    type:'POST',
+                    header:{
+                        contentType:'application/JSON',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    dataType:'json',
+                    data:JSON.stringify($scope.final_ans),
+                    success:function(data)
+                    {
+                        console.log("done",data);
+                    },
+                    error:function(err)
+                    {
+                        console.log(err);
+                    }
+                });
+            }
+
+            $http({
+                method: 'GET',
+                url: 'http://178.33.132.20:10000/test/starttest/'+'<%=testid%>'
+            }).then(function (response) {
+
+                var_test_id = response.data.testID;
+                var_id = response.data._id
+                $scope.json.push({'category' : 'apti', 'question' : response.data.apti.length})
+                $scope.json.push({'category':'tech', 'question' : response.data.tech.length})
+                $scope.json.push({'category':'psycho', 'question' : response.data.psycho.length})
+                console.log($scope.json)
+                $scope.questions['apti'] = response.data.apti
+                $scope.questions['tech'] = response.data.tech
+                $scope.questions['psycho'] = response.data.psycho
+                //console.log($scope.questions);
+            }, function (response) {
+                console.log(response);
+            });
+
+            $scope.quesarr = function(v)
+            {
                 arr = []
                 for(i=1; i<=v; i++) arr.push(i)
                 return arr
             };
 
-            $scope.getQuestion = function(cat, qid) {
-                console.log(cat, qid);
+            $window.onblur = function()
+            {
+                $scope.final2();
+                $window.location("/complete");
+            }
 
-                $http.get("").then(function (res)
-                        {
-                            res = {
-                                "ques" : "adad",
-                                "option" : [
-                                    1, 2, 3, 4, 5
-                                ]
-                            }
-                            res.qid = qid
-                            $scope.question = res;
-                        },
-                        function(err) {
-                            console.log("error", err);
+
+            $scope.countdown =      function (minutes) {
+                var seconds = 60;
+                var mins = minutes
+                function tick() {
+                    var counter = document.getElementById("timer");
+                    var current_minutes = mins-1
+                    seconds--;
+                    counter.innerHTML =
+                            current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+                    if( seconds > 0 ) {
+                        setTimeout(tick, 1000);
+                    } else {
+                        if(mins > 1){
+                            setTimeout(function () { countdown(mins - 1); }, 1000);
                         }
-                )
+                    }
+                    if(current_minutes==00 && seconds==30)    {
+                        alert("2 minutes left");
+                    }
+                    if(current_minutes==0 && seconds==0)    {
+                        $scope.final2();
+                        window.open("cmplt_src.html","_self");     }
+                }
+                tick();
+            };$scope.countdown(1);
+
+            $scope.prev = function() {
+                $scope.getQuestion(var_cat,(var_qid)-1);
+            }
+
+            $scope.next= function()  {
+                $scope.getQuestion(var_cat,(var_qid)+1);
+            }
+
+            $scope.getQuestion = function(cat, qID) {
+
+
+                console.log(cat, qID)
+                var_qid=qID;
+                var_cat=cat;
+                if(var_cat==="apti")
+                {
+                    for(var i=0;i< $scope.ans_apti.length;i++)
+                    {
+                        if($scope.ans_apti[i].qID === qID){ ansq = $scope.ans_apti[i].answer;
+                            document.getElementById("radio_"+ ansq).checked = true; break;}
+                    }
+                }
+                else if(var_cat==="tech")
+                {
+                    for(var i=0;i<$scope.ans_tech.length;i++)
+                    {
+                        if($scope.ans_tech[i].qID === qID){ anst = $scope.ans_tech[i].answer;
+                            document.getElementById("radio_"+ anst).checked = true;break;}
+                    }
+                }
+                else if(var_cat==="psycho")
+                {
+                    for(var i=0;i<$scope.ans_psycho.length;i++)
+                    {
+                        if($scope.ans_psycho[i].qID === qID){ ansqq = $scope.ans_psycho[i].answer;
+                            document.getElementById("radio_"+ ansqq).checked = true;break;}
+                    }
+                }
+                /*        if($scope.ans_apti[i].qID === qID)
+                 {
+                 $scope.ans_apti[i].answer == ""
+                 break;
+                 }
+                 */
+
+                //   clearfn();
+                check();
+
+                $scope.text = false;
+                $scope.btn_clear = true;
+                $scope.btn_submit = true;
+                $scope.btn_mark = true;
+
+                if(qID==1)
+                    $scope.prev_btn=false
+                else
+                    $scope.prev_btn=true;
+
+                for(i in $scope.json) {
+                    if($scope.json[i].category==cat)
+                        var r = $scope.json[i].question
+                }
+
+                if(qID==r)
+                    $scope.next_btn=false
+                else
+                    $scope.next_btn=true
+
+
+                var_id = $scope.questions[cat][qID-1]._id;
+
+                $scope.question1 = {
+                    'question' : $scope.questions[cat][qID-1].ques,
+                    'answer' : $scope.questions[cat][qID-1].answers,
+                    'qid' : $scope.questions[cat][qID-1].qID
+                }
             };
         }]);
+
+
+
+
+
+
+
     </script>
+
+    <style>
+        .init_div
+        {
+            background-color: azure;
+            border:1px solid grey;
+            border-radius: 4px;
+            color:darkcyan;
+            padding: 4px;
+        }
+        .meri_class1{
+            padding: 10px;
+            margin-top: 40%;
+            margin-left:80%;
+            box-shadow: 2px 3px 5px #303030;
+            background-color: #008cba;
+            font-size: 18px;
+            font-weight: 400;
+            height: 44px;
+            width:157px;
+            border:1px solid black;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            z-index: 100;
+        }
+    </style>
 </head>
 
 <body>
 <nav class="navbar navbar-default templatemo-nav nav-main" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <!--<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon icon-bar"></span>
-            <span class="icon icon-bar"></span>
-            <span class="icon icon-bar"></span>
-            </button>-->
-            <a href="#" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"> </span></a>
+            <a href="index.html" class="navbar-brand"><span><img src="images/Logo (New).png" class="logo"> </span></a>
         </div>
         <div class="collapse navbar-collapse">
-
             <div class="nav navbar-nav navbar-right text-center">
                 <div id="timer"></div>
-                <a href="/complete"><button class=" meri_class">Complete test</button></a>
-            </div>
 
+                <!--<input type="button" ng-click="final2()" class=" meri_class" value="Complete test">-->
+            </div>
         </div>
     </div>
 </nav>
@@ -108,27 +470,29 @@
         </div>
     </div>
     <div class="col-md-10 question-panel">
-       <-- <div class="col-md-2">
-           <-- <a href="#"><button class="prev_btn" onclick="return click()"><img src="" height="10%"></button></a>-->
-        </div>-->
+        <div class="col-md-2">
+            <button class="prev_btn" ng-show="prev_btn" ng-click="prev()"><img src="images/prev.png" height="10%"></button>
+        </div>
         <div class="col-md-8 que">
-            <h5 class="h5_que"><p class="li_que">Q1.</p>Which is a valid keyword in java?</h5>
-            <input type="radio" ng-repeat="op in question.option">{{op[i-1]}}<br>
-            <input type="radio" value="machine1" name="mac">&nbsp;interface<br>
-            <input type="radio" value="machin2" name="mac">&nbsp;string<br>
-            <input type="radio" value="machine3" name="mac">&nbsp;Float<br>
-            <input type="radio" value="machine4" name="mac">&nbsp;unsigned<br><br>
+            <div ng-show="text" class="init_div">
+                <h4 style="text-align:center">You can now start with the category of your choice by selecting from the left panel.</h4>
+                <h4 style="text-align:center"><b>All the Best</b></h4></div>
+            <h5 class="h5_que"><p class="li_que">{{question1.qid}}.</p>{{question1.question}}</h5>
+            <radio ng-repeat="op in question1.answer" >
+                <input type="radio" name="a" id="radio_{{op}}" ng-model="option.value" value="{{op}}">{{op}}<br>
+            </radio>
             <div class="text-center">
-                <input type="button" value="Clear" class="btn">&nbsp;
-                <input type="button" value="Submit" class="btn">&nbsp;
-                <input type="checkbox"><b>Mark for review</b>
+                <input type="button" ng-show="btn_clear" value="Clear" ng-click="clearfn()" class="btn">&nbsp;
+                <input type="button" ng-show="btn_submit" value="Submit" ng-click="sbmtfn(json)" class="btn">&nbsp;
+                <input type="button" ng-click="mark1()" ng-show="btn_mark" value="Mark for review" id="mark" class="btn">
+                <input type="button" ng-click="final2()" class="meri_class1" value="Complete test">
             </div>
         </div>
         <div class="col-md-2">
-            <a href="#"><button class="prev_btn"><img src="images/next.png" height="10%"></button></a>
+            <button class="prev_btn" ng-show="next_btn" ng-click="next()"><img src="images/next.png" height="10%"></button>
         </div>
     </div>
 </div>
-<script src="js/timer.js"></script>
+<!--          <script src="js/timer.js"></script>-->
 </body>
 </html>
